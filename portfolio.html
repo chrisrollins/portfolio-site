@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chris Rollins</title>
+</head>
+<link rel="stylesheet" type="text/css" href="slider.css">
+
+<script type="text/javascript">
+(()=>{
+
+    const projects = [];
+    projects.current = 0;
+    projects.add = (title, description, imageURL, link, github)=>{
+        projects.push({
+            title: title,
+            description: description,
+            imageURL: imageURL,
+            link: link,
+            github: github
+        });
+    }
+
+    projects.add("Shuriken", "Shuriken placeholder", "", "", "https://github.com/chrisrollins/Shuriken");
+    projects.add("FMFA", "Worked with a team of developers to build a website for FMFA, a teaching organization owned by Fred Fowler. Fred is a highly experienced Scrum instructor. My primary contributions to this project were backend code, database, and admin panel.", "https://puu.sh/tLsks/c81d288142.png", "", "https://github.com/fmfainc/FMFAWeb");
+    projects.add("YPC", "YPC placeholder", "", "", "");
+
+    const text = {
+        list: [
+                "Developer",
+                "Programmer",
+                "Coder",
+                "Hacker",
+                "Ninja",
+                "Dude",
+                "Nerd"],
+        i: 0,
+
+        next: ()=>{
+            if(text.i === text.list.length)
+                text.i = 0;
+            return text.list[text.i++];
+        },
+
+        random: ()=>{
+            let onCooldown = [];
+            let active = text.list.slice();
+            return ()=>{
+                if(onCooldown.length === 2){
+                    active.push(onCooldown[0]);
+                    onCooldown[0] = onCooldown[1];
+                    onCooldown.pop();
+                }
+                let last = active.length - 1;
+                let index = ~~(Math.random()*(last));
+                let choice = active[index];
+                active[index] = active[last];
+                onCooldown.push(choice);
+                active.pop();
+
+                return choice;
+            }
+        }
+    };
+    text.random = text.random();
+
+/////////////////////  Main code  /////////////////////
+    window.onload = ()=>{
+        const changingText = document.querySelector("#changingText");
+        const project = document.querySelector("#project");
+        const skills = document.querySelector("#skills");
+        const contact = document.querySelector("#contact");
+        const modeSlider = document.querySelector("#ndModeSlider");
+        const leftButton = document.querySelector("#prevProj");
+        const rightButton = document.querySelector("#nextProj");
+
+        console.log(projects);
+ 		viewProject(0);
+        resizeProjectBox();
+       
+        setInterval(()=>{
+                changingText.style.filter = "blur(8px)";
+                setTimeout(()=>{
+                    changingText.innerText = "%%%%%%";
+                }, 150);
+                setTimeout(()=>{
+                    changingText.innerText = text.random();
+                    changingText.style.filter = "blur(0px)";
+                }, 300);
+        }, 5000);
+ 
+        modeSlider.oninput = (e)=>{
+        	const allElements = document.querySelectorAll("*");
+
+        	for(element of allElements)
+        	{
+        		console.log(element)
+        		if(element.nodeName !== "img")
+            		element.style.filter = `invert(${e.target.value}%)`;
+        	}
+        };
+
+        leftButton.onmouseup = ()=>{
+        	projects.current--;
+        	if(projects.current < 0)
+        		projects.current = projects.length - 1;
+        	viewProject(projects.current);
+        };
+
+        rightButton.onmouseup = ()=>{
+        	projects.current++;
+        	projects.current %= projects.length;
+        	viewProject(projects.current);
+        };
+    };
+ /////////////////////////////////////////////////////////
+
+    window.onresize = (e)=>{
+        resizeProjectBox();
+    };
+
+    const viewProject = (index)=>{
+    	console.log(index);
+        const projectIMG = document.querySelector("#project img");
+        const projectTitle = document.querySelector("#projectTitle");
+        const projectText = document.querySelector("#projectText");
+        const projectLink = document.querySelector("#projectLink");
+        const projectGH = document.querySelector("#projectGH");
+    	// project.style["background-image"] = `url(${projects[index].imageURL})`;
+    	projectIMG.src = projects[index].imageURL;
+    	projectTitle.innerText = projects[index].title;
+    	projectText.innerText = projects[index].description;
+    	projectLink.href = projects[index].link;
+    	projectGH.href = projects[index].github;
+    };
+ 
+    const resizeProjectBox = ()=>{
+        const boxes = document.querySelectorAll(".projectBox");
+        const leftButton = document.querySelector("#prevProj");
+        const rightButton = document.querySelector("#nextProj");
+        const xdiff = (window.innerWidth < 1920 )?(1920 - window.innerWidth):0;
+        const ydiff = (window.innerHeight < 1080 )?(1080 - window.innerHeight):0;
+        const xfactor = 40 + xdiff/20;
+        const yfactor = 1 - ydiff/(ydiff+600);
+        const buttonStart = 49;
+        const rect = boxes[0].getBoundingClientRect();
+        for(let box of boxes){
+            box.style.width = ~~(xfactor * yfactor) + "%";
+        }
+        const boxVerticalMiddle = ~~(rect.height/2 + rect.top - 25);
+        leftButton.style.top = boxVerticalMiddle + "px";
+        leftButton.style.left = rect.left + "px";
+        rightButton.style.top = boxVerticalMiddle + "px";
+        rightButton.style.right = rect.left + "px";
+    };
+})();
+</script>
+<style type="text/css" id="mainSheet">
+    *{
+        margin: 0px;
+        padding: 0px;
+        font-family: "Courier";
+        text-align: center;
+        transition: background-color 500ms;
+    }
+    #name{
+        margin-top: 0px;
+    }
+    .smicon{
+        width: 20px;
+        height: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    #ndModeSlider{
+        width: 40px;
+        border: 2px solid #eee;
+        background-color: #aaa;
+        color: #000;
+        border-radius: 50px;
+    }
+    #changingText{
+        height: 10px;
+        margin-bottom: 20px;
+        transition: filter 150ms;
+    }
+    .projectBox{
+        height: 80%;
+        width: 40%;
+        display: inline-block;
+        margin: 0px auto;
+        vertical-align: top;
+        background-color: #aaa;
+    }
+    #projects{
+        margin: 0 auto;
+        width: 100%;
+        height: 60%;
+    }
+    #project{
+ 
+    }
+    #project img{
+    	width: 32vw;
+    	height: 32vh;
+    	margin-top: 2%;
+    }
+    #projectText{
+    	height: 20%;
+    	/*background-color: #d0d0d0;*/
+    }
+    #projectLinkContainer, #projectGHContainer{
+		margin: 4%;
+    }
+    .projButton{
+        position: absolute;
+        font-size: 3em;
+        color: #fff;
+        width: 40px;
+        display: inline-block;
+        background-color: #ccc;
+        user-select: none;
+    }
+/*    #nextProj{
+        right: 29%;
+    }
+    #prevProj{
+        left: 29%;
+    }*/
+    #nextProj:hover, #prevProj:hover{
+        background-color: #eee;
+        cursor: default;
+    }
+    #nextProj:active, #prevProj:active{
+        background-color: #000;
+        cursor: default;
+    }
+    #skills{
+        width: 100%;
+        height: 13%;
+        background-color: #eee;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+    #skills h2{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    #skills p{
+        margin-top: 8px;
+    }
+</style>
+<body>
+<div style="width: 100%; height:100vh; margin: 0 auto; background-color: #fff;">
+<img class="smicon" src="sun.svg">
+<input type="range" name="mode" id="ndModeSlider" value="0">
+<img class="smicon" src="moon.svg">
+    <h1 id="name">Chris Rollins</h1>
+    <p id="changingText">Programmer</p>
+ 
+    <div id="projects">
+        <h2>Projects</h2>
+        <div id="prevProj" class="projButton">&lt;</div>
+        <div id="project" class="projectBox">
+        	<h3 id="projectTitle"></h3>
+        	<p id="projectText"><p>
+        	<span id="projectLinkContainer"><a href="" id="projectLink">Visit Site</a></span>
+        	<span id="projectGHContainer"><a href="" id="projectGH">Source code on GitHub</a></span>
+        	<img src="">
+        </div>
+        <div id="nextProj" class="projButton">&gt;</div>
+    </div>
+    <div id="skills">
+        <h2>Skills</h2>
+        <p>C# Java Python Swift JavaScript HTML5 CSS3</p>
+        <p>Angular Express Flask JQuery Socket.io MySQL MongoDB AWS GitHub</p>
+    </div>
+    <div id="contact">
+        <h2>Contact</h2>
+        <p>LinkedIn Email GitHub</p>
+    </div>
+</div>
+</body>
+</html>
