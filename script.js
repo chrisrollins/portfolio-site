@@ -12,9 +12,21 @@
         });
     }
 
-    projects.add("Shuriken", "Shuriken is a webserver framework for C# I built as a learning project. Using it to host a basic website is very simple, as shown in the screenshot. It features multithreading, file caching, and limited HTML templating.", "https://puu.sh/tMnHB/0a5d691ae3.png", "", "https://github.com/chrisrollins/Shuriken");
-    projects.add("FMFA", "Worked with a team of developers to build a website for FMFA, a teaching organization owned by Fred Fowler. Fred is a highly experienced Scrum instructor. My primary contributions to this project were backend code, database, and admin panel.", "https://puu.sh/tLsks/c81d288142.png", "", "https://github.com/fmfainc/FMFAWeb");
-    projects.add("Young Professionals Council", "YPC is a fundraising organization in San Jose which holds events to raise money for the Valley Medical Center. My primary contribution to this project was backend Node.js server design.", "https://puu.sh/tMhQB/d8c1563d8a.jpg", "", "https://github.com/ZakStrassberg/YPC-scrum");
+    projects.add("Shuriken",
+        "Shuriken is a webserver framework for C# I built as a learning project. Using it to host a basic website is very simple, as shown in the screenshot. It features multithreading, file caching, and limited HTML templating.",
+        "https://puu.sh/tMnHB/0a5d691ae3.png",
+        "https://github.com/chrisrollins/Shuriken",
+        "https://github.com/chrisrollins/Shuriken");
+    projects.add("FMFA",
+        "Worked with a team of developers to build a website for FMFA, a teaching organization owned by Fred Fowler. Fred is a highly experienced Scrum instructor. My primary contributions to this project were backend code, database, and admin panel.",
+        "https://puu.sh/tLsks/c81d288142.png",
+        "",
+        "https://github.com/fmfainc/FMFAWeb");
+    projects.add("Young Professionals Council",
+        "YPC is a fundraising organization in San Jose which holds events to raise money for the Valley Medical Center. My primary contribution to this project was backend Node.js server design.",
+        "https://puu.sh/tMhQB/d8c1563d8a.jpg",
+        "",
+        "https://github.com/ZakStrassberg/YPC-scrum");
 
     const text = {
         list: [

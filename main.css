@@ -7,7 +7,6 @@
 }
 .projLinkButton{
 	font-family: "Eras ITC";
-	/*background-color: #aaa;*/
     background-color: #FFF9D4;
 	border-radius: 25px;
 	padding: 5px;
@@ -16,6 +15,7 @@
 	text-decoration: none;
 	color: #333;
     border: solid 1px #ccc;
+    cursor: pointer;
 }
 .projLinkButton:hover{
 	background-color: #fff;
@@ -129,6 +129,7 @@
 	vertical-align: middle;
 	margin-left: 50px;
 	margin-right: 50px;
+    cursor: pointer;
 }
 #credit
 {
