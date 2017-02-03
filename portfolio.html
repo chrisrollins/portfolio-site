@@ -20,9 +20,9 @@
         });
     }
 
-    projects.add("Shuriken", "Shuriken placeholder", "", "", "https://github.com/chrisrollins/Shuriken");
+    projects.add("Shuriken", "Shuriken is a webserver framework for C# I built as a learning project. It features multithreading, file caching, and limited HTML templating.", "", "", "https://github.com/chrisrollins/Shuriken");
     projects.add("FMFA", "Worked with a team of developers to build a website for FMFA, a teaching organization owned by Fred Fowler. Fred is a highly experienced Scrum instructor. My primary contributions to this project were backend code, database, and admin panel.", "https://puu.sh/tLsks/c81d288142.png", "", "https://github.com/fmfainc/FMFAWeb");
-    projects.add("YPC", "YPC placeholder", "", "", "");
+    projects.add("Young Professionals Council", "YPC is a fundraising organization in San Jose which holds events to raise money for the Valley Medical Center. My primary contribution to this project was backend Node.js server design.", "", "", "");
 
     const text = {
         list: [
@@ -31,8 +31,8 @@
                 "Coder",
                 "Hacker",
                 "Ninja",
-                "Dude",
-                "Nerd"],
+                "Nerd",
+                "Dude"],
         i: 0,
 
         next: ()=>{
@@ -72,6 +72,7 @@
         const modeSlider = document.querySelector("#ndModeSlider");
         const leftButton = document.querySelector("#prevProj");
         const rightButton = document.querySelector("#nextProj");
+        const email = document.querySelector("#email");
 
         console.log(projects);
  		viewProject(0);
@@ -88,15 +89,13 @@
                 }, 300);
         }, 5000);
  
-        modeSlider.oninput = (e)=>{
-        	const allElements = document.querySelectorAll("*");
 
-        	for(element of allElements)
-        	{
-        		console.log(element)
-        		if(element.nodeName !== "img")
-            		element.style.filter = `invert(${e.target.value}%)`;
-        	}
+ //Events for elements
+        modeSlider.oninput = (e)=>{
+        	const projIMG = document.querySelector("#projIMG");
+        	const percent = e.target.value;
+        	document.body.style.filter = `invert(${percent}%)`;
+        	projIMG.style.filter = `invert(${percent}%)`;
         };
 
         leftButton.onmouseup = ()=>{
@@ -111,6 +110,19 @@
         	projects.current %= projects.length;
         	viewProject(projects.current);
         };
+
+        email.onmouseup = ()=>{
+        	if(!email.show)
+        	{
+        		email.show = true;
+        		email.style.filter = "blur(5px)";
+        	}
+        	else
+        	{
+        		email.show = false;
+        		email.style.filter = "none";
+        	}
+        }
     };
  /////////////////////////////////////////////////////////
 
@@ -120,12 +132,11 @@
 
     const viewProject = (index)=>{
     	console.log(index);
-        const projectIMG = document.querySelector("#project img");
+        const projectIMG = document.querySelector("#projIMG");
         const projectTitle = document.querySelector("#projectTitle");
         const projectText = document.querySelector("#projectText");
         const projectLink = document.querySelector("#projectLink");
         const projectGH = document.querySelector("#projectGH");
-    	// project.style["background-image"] = `url(${projects[index].imageURL})`;
     	projectIMG.src = projects[index].imageURL;
     	projectTitle.innerText = projects[index].title;
     	projectText.innerText = projects[index].description;
@@ -139,7 +150,7 @@
         const rightButton = document.querySelector("#nextProj");
         const xdiff = (window.innerWidth < 1920 )?(1920 - window.innerWidth):0;
         const ydiff = (window.innerHeight < 1080 )?(1080 - window.innerHeight):0;
-        const xfactor = 40 + xdiff/20;
+        const xfactor = 50 + xdiff/20;
         const yfactor = 1 - ydiff/(ydiff+600);
         const buttonStart = 49;
         const rect = boxes[0].getBoundingClientRect();
@@ -161,6 +172,27 @@
         font-family: "Courier";
         text-align: center;
         transition: background-color 500ms;
+    }
+    .projLinkButton{
+    	font-family: "Eras ITC";
+    	background-color: #aaa;
+    	border-radius: 25px;
+    	padding: 5px;
+    	padding-left: 10px;
+    	padding-right: 10px;
+    	text-decoration: none;
+    	color: #fff;
+        border: solid 1px #ccc;
+    }
+    .projLinkButton:hover{
+    	background-color: #ddd;
+        border: solid 1px #aaa;
+    }
+    #wrapper{
+    	width: 100%;
+    	height:100vh;
+    	margin: 0 auto;
+    	background-color: #fff;
     }
     #name{
         margin-top: 0px;
@@ -184,17 +216,20 @@
         transition: filter 150ms;
     }
     .projectBox{
-        height: 80%;
+        height: 81%;
         width: 40%;
         display: inline-block;
         margin: 0px auto;
         vertical-align: top;
-        background-color: #aaa;
+        background: linear-gradient(#fff, #eee 10%, #fff 90%);;
     }
     #projects{
         margin: 0 auto;
         width: 100%;
         height: 60%;
+    }
+    #projects h2{
+    	margin-bottom: 20px;
     }
     #project{
  
@@ -203,10 +238,17 @@
     	width: 32vw;
     	height: 32vh;
     	margin-top: 2%;
+    	border-radius: 10px;
+    }
+    #projectTitle
+    {
+    	margin: 5px;
     }
     #projectText{
-    	height: 20%;
-    	/*background-color: #d0d0d0;*/
+    	height: 15%;
+    	margin-left: 10px;
+    	margin-right: 10px;
+    	font-family: "Eras ITC";
     }
     #projectLinkContainer, #projectGHContainer{
 		margin: 4%;
@@ -219,18 +261,14 @@
         display: inline-block;
         background-color: #ccc;
         user-select: none;
+        border: solid 1px #ccc;
     }
-/*    #nextProj{
-        right: 29%;
-    }
-    #prevProj{
-        left: 29%;
-    }*/
-    #nextProj:hover, #prevProj:hover{
+    .projButton:hover{
         background-color: #eee;
+        border: solid 1px #aaa;
         cursor: default;
     }
-    #nextProj:active, #prevProj:active{
+    .projButton:active{
         background-color: #000;
         cursor: default;
     }
@@ -247,10 +285,24 @@
     }
     #skills p{
         margin-top: 8px;
+    	font-family: "Eras ITC";
+    }
+    .contactItem{
+    	height: 40px;
+    	line-height: 40px;
+    	display: inline-block;
+    	vertical-align: middle;
+    	margin-left: 50px;
+    	margin-right: 50px;
+    }
+    #credit
+    {
+    	margin-top: 10px;
+    	font-size: 0.7em;
     }
 </style>
 <body>
-<div style="width: 100%; height:100vh; margin: 0 auto; background-color: #fff;">
+<div class="all" id="wrapper">
 <img class="smicon" src="sun.svg">
 <input type="range" name="mode" id="ndModeSlider" value="0">
 <img class="smicon" src="moon.svg">
@@ -261,11 +313,11 @@
         <h2>Projects</h2>
         <div id="prevProj" class="projButton">&lt;</div>
         <div id="project" class="projectBox">
-        	<h3 id="projectTitle"></h3>
+        	<h2 id="projectTitle"></h2>
         	<p id="projectText"><p>
-        	<span id="projectLinkContainer"><a href="" id="projectLink">Visit Site</a></span>
-        	<span id="projectGHContainer"><a href="" id="projectGH">Source code on GitHub</a></span>
-        	<img src="">
+        	<span id="projectLinkContainer"><a class="projLinkButton" href="" id="projectLink">Visit Site</a></span>
+        	<span id="projectGHContainer"><a class="projLinkButton" href="" id="projectGH">Source code on GitHub</a></span>
+        	<img id="projIMG" src="">
         </div>
         <div id="nextProj" class="projButton">&gt;</div>
     </div>
@@ -276,7 +328,8 @@
     </div>
     <div id="contact">
         <h2>Contact</h2>
-        <p>LinkedIn Email GitHub</p>
+        <div><div class="contactItem"><a href="https://www.linkedin.com/in/chris-rollins-2669a053"><img src="linkedin.png"></a></div> <div class="contactItem"><span id="email"><img src="email.png" width="32px" height="32px"></span></div> <div class="contactItem"><a href="https://github.com/chrisrollins/"><img src="github.png"></a></div></div>
+        <p id="credit">Portfolio made by me using HTML, CSS, and JavaScript ES6</p>
     </div>
 </div>
 </body>
