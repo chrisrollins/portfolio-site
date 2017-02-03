@@ -1,0 +1,173 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Courier";
+    text-align: center;
+    transition: background-color 500ms;
+}
+.projLinkButton{
+	font-family: "Eras ITC";
+	/*background-color: #aaa;*/
+    background-color: #FFF9D4;
+	border-radius: 25px;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	color: #333;
+    border: solid 1px #ccc;
+}
+.projLinkButton:hover{
+	background-color: #fff;
+    border: solid 1px #aaa;
+}
+#wrapper{
+	width: 100%;
+	height:100vh;
+	margin: 0 auto;
+	background-color: #fff;
+}
+#name{
+    margin-top: 0px;
+}
+.sectionHeader{
+	text-decoration: underline;
+}
+.smicon{
+    width: 20px;
+    height: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#ndModeSlider{
+    width: 40px;
+    border: 2px solid #eee;
+    background-color: #aaa;
+    color: #000;
+    border-radius: 50px;
+}
+#changingText{
+    height: 10px;
+    margin-bottom: 20px;
+    transition: filter 150ms;
+}
+.projectBox{
+    height: 81%;
+    width: 40%;
+    display: inline-block;
+    margin: 0px auto;
+    vertical-align: top;
+    background: linear-gradient(#fff, #eee 10%, #fff 90%);;
+}
+#projects{
+    margin: 0 auto;
+    width: 100%;
+    height: 60%;
+}
+#projects h2{
+	margin-bottom: 20px;
+}
+#project{
+
+}
+#project img{
+	width: 32vw;
+	height: 32vh;
+	margin-top: 2%;
+	border-radius: 10px;
+}
+#projectTitle
+{
+	margin: 5px;
+}
+#projectText{
+	height: 15%;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-family: "Eras ITC";
+}
+#projectLinkContainer, #projectGHContainer{
+	margin: 4%;
+}
+.projButton{
+    position: absolute;
+    font-size: 3em;
+    color: #fff;
+    width: 40px;
+    display: inline-block;
+    background-color: #ccc;
+    user-select: none;
+    border: solid 1px #ccc;
+}
+.projButton:hover{
+    background-color: #eee;
+    border: solid 1px #aaa;
+    cursor: default;
+}
+.projButton:active{
+    background-color: #000;
+    cursor: default;
+}
+#skills{
+    width: 100%;
+    height: 13%;
+    background-color: #eee;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+#skills h2{
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+#skills p{
+    margin-top: 8px;
+}
+.contactItem{
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+#credit
+{
+	margin-top: 15px;
+	font-size: 0.75em;
+}
+#emailBox{
+    width: 350px;
+    height: 60px;
+    background-color: #ddd;
+    border-radius: 2px;
+    border: 1px #888 solid;
+    visibility: hidden;
+    padding-top: 5px;
+}
+#emailBox button{
+    margin: 5px;
+    padding-top: 1px;
+}
+#emailBoxCloseButton{
+    width: 20px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    user-select: none;
+    cursor: default;
+    border-radius: 50px;
+    font-family: sans-serif;
+    color: #999;
+}
+#emailBoxCloseButton:hover{
+    color: #990000;
+}
+#emailP{
+    background: rgba(0,0,0,0);
+    font-family: "Eras ITC";
+    border: none;
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+    font-size: 20px;
+}
