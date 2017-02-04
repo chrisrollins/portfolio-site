@@ -97,16 +97,16 @@ h2{
 	margin: 5px;
 }
 #projectText{
-	height: 12%;
+	height: 10%;
 	margin-left: 10px;
 	margin-right: 10px;
 	font-family: "Eras ITC";
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 #projectTechs{
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     color: #666;
-    font-size: 0.8em;
+    font-size: 0.7em;
     word-spacing: 10px;
     font-style: italic;
     font-family: "Eras ITC";
