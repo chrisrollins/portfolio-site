@@ -2,10 +2,11 @@
 
     const projects = [];
     projects.current = 0;
-    projects.add = (title, description, imageURL, link, github)=>{
+    projects.add = (title, description, technologies, imageURL, link, github)=>{
         projects.push({
             title: title,
             description: description,
+            technologies: technologies,
             imageURL: imageURL,
             link: link,
             github: github
@@ -14,16 +15,19 @@
 
     projects.add("Shuriken",
         "Shuriken is a webserver framework for C# I built as a learning project. Using it to host a basic website is very simple, as shown in the screenshot. It features multithreading, file caching, and limited HTML templating.",
+        "C# .NET HTTP",
         "https://puu.sh/tMnHB/0a5d691ae3.png",
         "https://github.com/chrisrollins/Shuriken",
         "https://github.com/chrisrollins/Shuriken");
     projects.add("FMFA",
         "Worked with a team of developers to build a website for FMFA, a teaching organization owned by Fred Fowler. Fred is a highly experienced Scrum instructor. My primary contributions to this project were backend code, database, and admin panel.",
+        "JavaScript Node.JS Angular.JS JQuery MySQL",
         "https://puu.sh/tLsks/c81d288142.png",
         "",
         "https://github.com/fmfainc/FMFAWeb");
     projects.add("Young Professionals Council",
         "YPC is a fundraising organization in San Jose which holds events to raise money for the Valley Medical Center. My primary contribution to this project was backend Node.js server design.",
+        "JavaScript Node.JS JQuery MySQL MongoDB",
         "https://puu.sh/tMhQB/d8c1563d8a.jpg",
         "",
         "https://github.com/ZakStrassberg/YPC-scrum");
@@ -106,7 +110,13 @@
  //Events for elements
         modeSlider.oninput = (e)=>{
         	const projIMG = document.querySelector("#projIMG");
-        	const percent = e.target.value;
+        	let percent = e.target.value;
+            if(percent < 52 && percent > 50)
+                percent = 52;
+            else if(percent > 48 && percent <= 50)
+                percent = 48;
+
+            console.log(percent);
         	document.body.style.filter = `invert(${percent}%)`;
         	projIMG.style.filter = `invert(${percent}%)`;
         };
@@ -189,15 +199,17 @@
     };
 
     const viewProject = (index)=>{
-    	console.log(index);
         const projectIMG = document.querySelector("#projIMG");
         const projectTitle = document.querySelector("#projectTitle");
         const projectText = document.querySelector("#projectText");
         const projectLink = document.querySelector("#projectLink");
         const projectGH = document.querySelector("#projectGH");
+        const projectTechs = document.querySelector("#projectTechs");
+
     	projectIMG.src = projects[index].imageURL;
     	projectTitle.innerText = projects[index].title;
     	projectText.innerText = projects[index].description;
+        projectTechs.innerText = `Technologies: ${projects[index].technologies}`;
     	projectLink.href = projects[index].link;
     	projectGH.href = projects[index].github;
     };
@@ -209,16 +221,9 @@
         const xdiff = (window.innerWidth < 1920 )?(1920 - window.innerWidth):0;
         const ydiff = (window.innerHeight < 1080 )?(1080 - window.innerHeight):0;
         const xfactor = 50 + xdiff/20;
-        const yfactor = 1 - ydiff/(ydiff+600);
-        const buttonStart = 49;
-        const rect = boxes[0].getBoundingClientRect();
+        const yfactor = 1 - ydiff/(ydiff+1000);
         for(let box of boxes){
             box.style.width = `${~~(xfactor * yfactor)}%`;
         }
-        const boxVerticalMiddle = ~~(rect.height/2 + rect.top - 25);
-        leftButton.style.top = `${boxVerticalMiddle}px`;
-        leftButton.style.left = `${rect.left}px`;
-        rightButton.style.top = `${boxVerticalMiddle}px`;
-        rightButton.style.right = `${rect.left}px`;
     };
 })();
