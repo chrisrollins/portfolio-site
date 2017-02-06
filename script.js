@@ -1,4 +1,4 @@
-(()=>{
+const script = ()=>{
 
     const projects = [];
     projects.current = 0;
@@ -116,7 +116,6 @@
             else if(percent > 48 && percent <= 50)
                 percent = 48;
 
-            console.log(percent);
         	document.body.style.filter = `invert(${percent}%)`;
         	projIMG.style.filter = `invert(${percent}%)`;
         };
@@ -215,15 +214,16 @@
     };
  
     const resizeProjectBox = ()=>{
-        const boxes = document.querySelectorAll(".projectBox");
+        const box = document.querySelector("#project");
         const leftButton = document.querySelector("#prevProj");
         const rightButton = document.querySelector("#nextProj");
         const xdiff = (window.innerWidth < 1920 )?(1920 - window.innerWidth):0;
         const ydiff = (window.innerHeight < 1080 )?(1080 - window.innerHeight):0;
         const xfactor = 50 + xdiff/20;
         const yfactor = 1 - ydiff/(ydiff+1000);
-        for(let box of boxes){
-            box.style.width = `${~~(xfactor * yfactor)}%`;
-        }
+        
+        box.style.width = `${~~(xfactor * yfactor)}%`;
     };
-})();
+};
+
+script();
