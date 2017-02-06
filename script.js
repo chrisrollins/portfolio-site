@@ -175,6 +175,7 @@ const script = ()=>{
         const otherSkillsParagraph = document.querySelector("#otherSkills");
         const lcontainer = document.createElement("span");
         const ocontainer = document.createElement("span");
+        langsParagraph.innerText = "";
         for(let lang of langs)
         {
             let element = document.createElement("span");
