@@ -29,7 +29,7 @@ const script = ()=>{
         "YPC is a fundraising organization in San Jose which holds events to raise money for the Valley Medical Center. My primary contribution to this project was backend Node.js server design.",
         "JavaScript Node.JS JQuery MySQL MongoDB",
         "https://puu.sh/tMhQB/d8c1563d8a.jpg",
-        "",
+        "http://youngprofessionalcouncil.com/",
         "https://github.com/ZakStrassberg/YPC-scrum");
 
     const text = {
