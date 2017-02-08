@@ -118,7 +118,7 @@ h2{
     font-family: "Eras ITC";
 }
 #projectLinkContainer, #projectGHContainer{
-	margin: 4%;
+	margin-right: 4%;
 }
 .projButton{
     font-size: 3em;

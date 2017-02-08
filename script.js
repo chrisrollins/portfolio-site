@@ -16,19 +16,19 @@ const script = ()=>{
     projects.add("Shuriken",
         "Shuriken is a webserver framework for C# I built as a learning project. Using it to host a basic website is very simple, as shown in the screenshot. It features multithreading, file caching, and limited HTML templating.",
         "C# .NET HTTP",
-        "https://puu.sh/tMnHB/0a5d691ae3.png",
+        "shurikenss.png",
         "https://github.com/chrisrollins/Shuriken",
         "https://github.com/chrisrollins/Shuriken");
     projects.add("FMFA",
         "Worked with a team of developers to build a website for FMFA, a teaching organization owned by Fred Fowler. Fred is a highly experienced Scrum instructor. My primary contributions to this project were backend code, database, and admin panel.",
         "JavaScript Node.JS Angular.JS JQuery MySQL",
-        "https://puu.sh/tLsks/c81d288142.png",
+        "fmfass.png",
         "",
         "https://github.com/fmfainc/FMFAWeb");
     projects.add("Young Professionals Council",
         "YPC is a fundraising organization in San Jose which holds events to raise money for the Valley Medical Center. My primary contribution to this project was backend Node.js server design.",
         "JavaScript Node.JS JQuery MySQL MongoDB",
-        "https://puu.sh/tMhQB/d8c1563d8a.jpg",
+        "ypcss.jpg",
         "http://youngprofessionalcouncil.com/",
         "https://github.com/ZakStrassberg/YPC-scrum");
 
@@ -40,7 +40,7 @@ const script = ()=>{
                 "Hacker",
                 "Ninja",
                 "Nerd",
-                "Dude"],
+                "Full Stack"],
         i: 0,
 
         next: ()=>{
@@ -90,6 +90,7 @@ const script = ()=>{
         const copyButton = document.querySelector("#copyButton");
         const mailto = document.querySelector("#mailto");
         const emailBoxCloseButton = document.querySelector("#emailBoxCloseButton");
+        const projImgLink = document.querySelector("#projImgLink");
 
         skillsInit();
         resizeProjectBox();
@@ -205,13 +206,24 @@ const script = ()=>{
         const projectLink = document.querySelector("#projectLink");
         const projectGH = document.querySelector("#projectGH");
         const projectTechs = document.querySelector("#projectTechs");
+        const projImgLink = document.querySelector("#projImgLink");
 
     	projectIMG.src = projects[index].imageURL;
     	projectTitle.innerText = projects[index].title;
     	projectText.innerText = projects[index].description;
         projectTechs.innerText = `Technologies: ${projects[index].technologies}`;
     	projectLink.href = projects[index].link;
+        projImgLink.href = projects[index].link;
     	projectGH.href = projects[index].github;
+        if(projects[index].link == "" || projects[index].link == projects[index].github){
+            projectLink.style.visibility = "hidden";
+            projectLink.style["margin-right"] = "-9%";
+        }else{
+            projectLink.style.visibility = "visible";
+            projectLink.style.width = "";
+            projectLink.style["margin-right"] = "";
+        }
+
     };
  
     const resizeProjectBox = ()=>{
