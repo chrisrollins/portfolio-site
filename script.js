@@ -109,16 +109,25 @@ const script = ()=>{
  
 
  //Events for elements
-        modeSlider.oninput = (e)=>{
-        	const projIMG = document.querySelector("#projIMG");
-        	let percent = e.target.value;
-            if(percent < 52 && percent > 50)
-                percent = 52;
-            else if(percent > 48 && percent <= 50)
-                percent = 48;
+        // modeSlider.oninput = (e)=>{
+        // 	const projIMG = document.querySelector("#projIMG");
 
-        	document.body.style.filter = `invert(${percent}%)`;
-        	projIMG.style.filter = `invert(${percent}%)`;
+        // 	document.body.style.filter = `invert(${modeSlider.value}%)`;
+        // 	projIMG.style.filter = `invert(${modeSlider.value}%)`;
+        // };
+        let dnToggle = true;
+        modeSlider.onmouseup = (e)=>{
+            if(!dnToggle){
+                dnToggle = true;
+                modeSlider.value = 0;
+                document.body.style.filter = "invert(0%)";
+                projIMG.style.filter = "invert(0%)";
+            }else{
+                dnToggle = false;
+                modeSlider.value = 100;
+                document.body.style.filter = "invert(100%)";
+                projIMG.style.filter = "invert(100%)";
+            }
         };
 
         leftButton.onmouseup = ()=>{

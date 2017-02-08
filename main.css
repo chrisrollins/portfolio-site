@@ -1,18 +1,18 @@
 @keyframes fadein{
     0% {filter: blur(10px) contrast(2) brightness(1.5);}
-    30% {filter: blur(1px) contrast(1.5) brightness(1.2);}
+    50% {filter: blur(1px) contrast(1.5) brightness(1.2);}
     100% {filter: blur(0px) contrast(1) brightness(1);}
 }
 body{
     animation-name: fadein;
-    animation-duration: 2s;
+    animation-duration: 1s;
 }
 *{
     margin: 0px;
     padding: 0px;
     font-family: "Courier";
     text-align: center;
-    transition: background-color 500ms;
+    transition: background-color 500ms, filter 1500ms;
 }
 h2{
     font-size: 1.2em;
