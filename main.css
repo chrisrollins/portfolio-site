@@ -12,10 +12,19 @@ body{
     padding: 0px;
     font-family: "Courier";
     text-align: center;
-    transition: background-color 500ms, filter 1500ms;
+    transition: background-color 500ms, filter 500ms;
 }
 h2{
     font-size: 1.2em;
+}
+.noSelect{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;        
+    cursor: default;
 }
 .projLinkButton{
 	font-family: "Eras ITC";
@@ -35,6 +44,7 @@ h2{
     border: solid 1px #aaa;
 }
 #wrapper{
+    padding-top: 5px;
 	width: 100%;
 	height: 100vh;
 	margin: 0 auto;
@@ -53,10 +63,25 @@ h2{
     margin-left: 0px;
     margin-right: 0px;
 }
-#ndModeSlider{
-    width: 40px;
-    border: 2px solid #eee;
-    background-color: #aaa;
+#ndModeMarker{
+    width: 15px;
+    height: 14px;
+    border-radius: 100px;
+    border: solid 1px #aaa;
+    display: inline-block;
+    background-color: #fff;
+    position: relative;
+    left: -7px;
+    transition: left 500ms;
+}
+#ndModeToggle{
+    width: 30px;
+    height: 16px;
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: top;
+    border: solid 1px #ccc;
+    background-color: #FFF9D4;
     color: #000;
     border-radius: 50px;
 }
@@ -82,13 +107,7 @@ h2{
 	margin-bottom: 1.5%;
 }
 #project{
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;        
-    cursor: default;
+
 }
 #project img{
 	width: 32vw;

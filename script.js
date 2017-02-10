@@ -81,7 +81,8 @@ const script = ()=>{
         const project = document.querySelector("#project");
         const skills = document.querySelector("#skills");
         const contact = document.querySelector("#contact");
-        const modeSlider = document.querySelector("#ndModeSlider");
+        const modeToggle = document.querySelector("#ndModeToggle");
+        const modeMarker = document.querySelector("#ndModeMarker");
         const leftButton = document.querySelector("#prevProj");
         const rightButton = document.querySelector("#nextProj");
         const email = document.querySelector("#email");
@@ -91,6 +92,7 @@ const script = ()=>{
         const mailto = document.querySelector("#mailto");
         const emailBoxCloseButton = document.querySelector("#emailBoxCloseButton");
         const projImgLink = document.querySelector("#projImgLink");
+        const linkedInLogo = document.querySelector("#linkedInLogo");
 
         skillsInit();
         resizeProjectBox();
@@ -109,24 +111,23 @@ const script = ()=>{
  
 
  //Events for elements
-        // modeSlider.oninput = (e)=>{
-        // 	const projIMG = document.querySelector("#projIMG");
-
-        // 	document.body.style.filter = `invert(${modeSlider.value}%)`;
-        // 	projIMG.style.filter = `invert(${modeSlider.value}%)`;
-        // };
         let dnToggle = true;
-        modeSlider.onmouseup = (e)=>{
+        const markerOffset = 7;
+        modeToggle.onmouseup = (e)=>{
             if(!dnToggle){
                 dnToggle = true;
-                modeSlider.value = 0;
+                modeMarker.style.left = `-${markerOffset}px`;
+                modeToggle.value = 0;
                 document.body.style.filter = "invert(0%)";
                 projIMG.style.filter = "invert(0%)";
+                linkedInLogo.style.filter = "hue-rotate(0deg)";
             }else{
                 dnToggle = false;
-                modeSlider.value = 100;
+                modeMarker.style.left = `${markerOffset}px`;
+                modeToggle.value = 100;
                 document.body.style.filter = "invert(100%)";
                 projIMG.style.filter = "invert(100%)";
+                linkedInLogo.style.filter = "hue-rotate(200deg)";
             }
         };
 

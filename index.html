@@ -3,19 +3,20 @@
 <head>
     <title>Chris Rollins</title>
 </head>
-<link rel="stylesheet" type="text/css" href="slider.css">
 <link rel="stylesheet" type="text/css" href="main.css">
 <script type="text/javascript" src="script.js"></script>
 <body>
-<div class="all" id="wrapper">
-<img class="smicon" src="sun.svg">
-<input type="range" name="mode" id="ndModeSlider" value="0">
-<img class="smicon" src="moon.svg">
+<div id="wrapper">
+    <div class="noSelect">
+        <img class="smicon" src="sun.svg">
+        <div id="ndModeToggle"><div id="ndModeMarker"></div></div>
+        <img class="smicon" src="moon.svg">
+    </div>
     <h1 id="name">Chris Rollins</h1>
     <p id="changingText">Programmer</p>
     <div id="projects">
         <h2 class="sectionHeader">Projects</h2>
-        <div id="project" class="projectBox">
+        <div id="project" class="projectBox noSelect">
         	<h2 id="projectTitle"></h2>
         	<p id="projectText">If you see this message, your web browser may be out of date or you have disabled JavaScript. My Portfolio works on the latest versions of Chrome, Firefox, Edge, and Safari.<p>
         	<p id="projectTechs"><p>
@@ -33,7 +34,10 @@
     </div>
     <div id="contact">
         <h2 class="sectionHeader">Contact</h2>
-        <div><div class="contactItem"><a href="https://www.linkedin.com/in/chris-rollins-2669a053"><img src="linkedin.png"></a></div> <div class="contactItem"><span id="email"><img src="email.png" width="32px" height="32px"></span></div> <div class="contactItem"><a href="https://github.com/chrisrollins/"><img src="github.png"></a></div></div>
+        <div>
+        <div class="contactItem"><a href="https://www.linkedin.com/in/chris-rollins-2669a053"><img id="linkedInLogo" src="linkedin.png"></a></div>
+        <div class="contactItem"><span id="email"><img src="email.png" width="32px" height="32px"></span></div>
+        <div class="contactItem"><a href="https://github.com/chrisrollins/"><img src="github.png"></a></div></div>
         <div id="emailBox"><input id="emailP" type="text" name="emailtxt"><button id="copyButton" class="projLinkButton">copy</button><a id="mailto" href=""><button class="projLinkButton">mail to</button></a><span id="emailBoxCloseButton">x</span></div>
         <p id="credit">Portfolio made by me using HTML, CSS, and JavaScript ES6</p>
     </div>
